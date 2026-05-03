@@ -1,27 +1,27 @@
 <template>
   <AuthLayout>
-    <div class="grid gap-6 w-full max-w-sm p-8 border border-gray-200 rounded-xl">
-      <h1 class="text-2xl font-bold text-center">註冊</h1>
+    <div class="grid gap-6 w-full max-w-sm p-8 bg-white border border-stone-200 rounded-xl shadow-sm">
+      <h1 class="text-2xl font-bold text-center text-stone-900">註冊</h1>
       <form class="grid gap-4" @submit.prevent="handleRegister">
         <div class="grid gap-1.5">
-          <label class="text-sm text-gray-500">Email</label>
+          <label class="text-sm text-stone-500">Email</label>
           <InputText v-model="email" type="email" placeholder="your@email.com" required fluid />
         </div>
         <div class="grid gap-1.5">
-          <label class="text-sm text-gray-500">密碼</label>
+          <label class="text-sm text-stone-500">密碼</label>
           <Password v-model="password" placeholder="至少 6 個字元" :feedback="false" toggleMask required fluid />
         </div>
         <div class="grid gap-1.5">
-          <label class="text-sm text-gray-500">確認密碼</label>
+          <label class="text-sm text-stone-500">確認密碼</label>
           <Password v-model="confirmPassword" placeholder="再輸入一次密碼" :feedback="false" toggleMask required fluid />
         </div>
         <Message v-if="error" severity="error" :closable="false">{{ error }}</Message>
         <Message v-if="success" severity="success" :closable="false">{{ success }}</Message>
         <Button type="submit" :loading="loading" label="註冊" fluid />
       </form>
-      <p class="text-center text-sm text-gray-500">
+      <p class="text-center text-sm text-stone-500">
         已有帳號？
-        <RouterLink to="/login" class="font-semibold text-zinc-900">登入</RouterLink>
+        <RouterLink to="/login" class="font-semibold text-orange-600 underline">登入</RouterLink>
       </p>
     </div>
   </AuthLayout>

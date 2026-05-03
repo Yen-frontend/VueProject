@@ -16,5 +16,5 @@ const router = useRouter()
 const route = useRoute()
 
 const hidden = ['/', '/login', '/register']
-const show = computed(() => !hidden.includes(route.path))
+const show = computed(() => !hidden.includes(route.path) && !route.meta.hideChrome)
 </script>

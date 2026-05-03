@@ -1,6 +1,6 @@
 <template>
   <AppLayout>
-    <p class="text-gray-400 text-sm">頁面 B</p>
+    <p class="text-stone-400 text-sm">頁面 B</p>
   </AppLayout>
 </template>
 

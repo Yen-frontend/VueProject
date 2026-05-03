@@ -1,7 +1,7 @@
 <template>
   <AppLayout>
     <div class="grid gap-6 w-full max-w-xl">
-      <h2 class="text-xl font-bold">待辦清單</h2>
+      <h2 class="text-xl font-bold text-stone-900">待辦清單</h2>
 
       <form class="grid grid-cols-[1fr_auto] gap-2" @submit.prevent="addTodo">
         <InputText
@@ -19,7 +19,7 @@
         <li
           v-for="todo in todos"
           :key="todo.id"
-          class="grid grid-cols-[auto_1fr_auto] items-center gap-3 px-4 py-3 border border-gray-200 rounded-lg"
+          class="grid grid-cols-[auto_1fr_auto] items-center gap-3 px-4 py-3 bg-white border border-stone-200 rounded-lg"
         >
           <Checkbox
             :modelValue="todo.is_complete"
@@ -28,7 +28,7 @@
           />
           <span
             class="text-sm transition-colors"
-            :class="todo.is_complete ? 'line-through text-gray-400' : 'text-gray-800'"
+            :class="todo.is_complete ? 'line-through text-stone-400' : 'text-stone-700'"
           >
             {{ todo.title }}
           </span>
@@ -42,7 +42,7 @@
         </li>
       </ul>
 
-      <p v-else-if="!loading" class="text-sm text-gray-400 text-center py-6">
+      <p v-else-if="!loading" class="text-sm text-stone-400 text-center py-6">
         目前沒有待辦事項
       </p>
     </div>

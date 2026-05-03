@@ -1,7 +1,7 @@
 <template>
   <AppLayout>
     <div class="grid gap-10 text-center">
-      <h1 class="text-2xl font-bold">功能清單</h1>
+      <h1 class="text-2xl font-bold text-stone-900">功能清單</h1>
       <div class="grid grid-cols-3 gap-3">
         <RouterLink to="/page-a">
           <Button label="待辦清單" outlined fluid />

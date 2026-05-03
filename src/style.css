@@ -9,4 +9,20 @@ body,
 
 body {
   font-family: system-ui, sans-serif;
+  background-color: #fafaf9;
+  color: #1c1917;
+}
+
+:root {
+  --p-primary-50: #fff7ed;
+  --p-primary-100: #ffedd5;
+  --p-primary-200: #fed7aa;
+  --p-primary-300: #fdba74;
+  --p-primary-400: #fb923c;
+  --p-primary-500: #f97316;
+  --p-primary-600: #ea580c;
+  --p-primary-700: #c2410c;
+  --p-primary-800: #9a3412;
+  --p-primary-900: #7c2d12;
+  --p-primary-950: #431407;
 }
