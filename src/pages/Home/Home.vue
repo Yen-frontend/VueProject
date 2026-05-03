@@ -4,27 +4,18 @@
       <h1 class="text-2xl font-bold">功能清單</h1>
       <div class="grid grid-cols-3 gap-3">
         <RouterLink to="/page-a">
-          <button class="w-full py-3 border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors cursor-pointer text-sm">
-            待辦清單
-          </button>
+          <Button label="待辦清單" outlined fluid />
         </RouterLink>
         <RouterLink to="/page-b">
-          <button class="w-full py-3 border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors cursor-pointer text-sm">
-            頁面 B
-          </button>
+          <Button label="頁面 B" outlined fluid />
         </RouterLink>
         <RouterLink to="/page-c">
-          <button class="w-full py-3 border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors cursor-pointer text-sm">
-            頁面 C
-          </button>
+          <Button label="頁面 C" outlined fluid />
         </RouterLink>
       </div>
-      <button
-        class="mx-auto px-4 py-1.5 text-sm border border-gray-300 rounded-md text-gray-400 hover:bg-red-50 hover:border-red-300 hover:text-red-400 transition-colors cursor-pointer"
-        @click="handleLogout"
-      >
-        登出
-      </button>
+      <div class="flex justify-center">
+        <Button label="登出" severity="danger" text @click="handleLogout" />
+      </div>
     </div>
   </AppLayout>
 </template>

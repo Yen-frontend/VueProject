@@ -5,32 +5,14 @@
       <form class="grid gap-4" @submit.prevent="handleLogin">
         <div class="grid gap-1.5">
           <label class="text-sm text-gray-500">Email</label>
-          <input
-            v-model="email"
-            type="email"
-            placeholder="your@email.com"
-            required
-            class="px-3 py-2 border border-gray-300 rounded-md text-sm outline-none focus:border-gray-500 transition-colors"
-          />
+          <InputText v-model="email" type="email" placeholder="your@email.com" required fluid />
         </div>
         <div class="grid gap-1.5">
           <label class="text-sm text-gray-500">密碼</label>
-          <input
-            v-model="password"
-            type="password"
-            placeholder="••••••••"
-            required
-            class="px-3 py-2 border border-gray-300 rounded-md text-sm outline-none focus:border-gray-500 transition-colors"
-          />
+          <Password v-model="password" placeholder="••••••••" :feedback="false" toggleMask required fluid />
         </div>
-        <p v-if="error" class="text-red-400 text-sm">{{ error }}</p>
-        <button
-          type="submit"
-          :disabled="loading"
-          class="py-2.5 bg-zinc-900 text-white text-sm rounded-md hover:bg-zinc-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors cursor-pointer"
-        >
-          {{ loading ? '登入中...' : '登入' }}
-        </button>
+        <Message v-if="error" severity="error" :closable="false">{{ error }}</Message>
+        <Button type="submit" :loading="loading" label="登入" fluid />
       </form>
       <p class="text-center text-sm text-gray-500">
         還沒有帳號？

@@ -1,11 +1,11 @@
 <template>
-  <button
+  <Button
     v-if="show"
-    class="fixed top-4 left-4 z-50 px-3 py-1.5 text-sm border border-gray-300 rounded-md bg-white/80 backdrop-blur-sm hover:bg-gray-100 transition-colors cursor-pointer"
+    label="← 返回"
+    text
+    class="fixed top-4 left-4 z-50"
     @click="router.back()"
-  >
-    ← 返回
-  </button>
+  />
 </template>
 
 <script setup lang="ts">

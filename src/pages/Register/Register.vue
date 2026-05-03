@@ -5,43 +5,19 @@
       <form class="grid gap-4" @submit.prevent="handleRegister">
         <div class="grid gap-1.5">
           <label class="text-sm text-gray-500">Email</label>
-          <input
-            v-model="email"
-            type="email"
-            placeholder="your@email.com"
-            required
-            class="px-3 py-2 border border-gray-300 rounded-md text-sm outline-none focus:border-gray-500 transition-colors"
-          />
+          <InputText v-model="email" type="email" placeholder="your@email.com" required fluid />
         </div>
         <div class="grid gap-1.5">
           <label class="text-sm text-gray-500">密碼</label>
-          <input
-            v-model="password"
-            type="password"
-            placeholder="至少 6 個字元"
-            required
-            class="px-3 py-2 border border-gray-300 rounded-md text-sm outline-none focus:border-gray-500 transition-colors"
-          />
+          <Password v-model="password" placeholder="至少 6 個字元" :feedback="false" toggleMask required fluid />
         </div>
         <div class="grid gap-1.5">
           <label class="text-sm text-gray-500">確認密碼</label>
-          <input
-            v-model="confirmPassword"
-            type="password"
-            placeholder="再輸入一次密碼"
-            required
-            class="px-3 py-2 border border-gray-300 rounded-md text-sm outline-none focus:border-gray-500 transition-colors"
-          />
+          <Password v-model="confirmPassword" placeholder="再輸入一次密碼" :feedback="false" toggleMask required fluid />
         </div>
-        <p v-if="error" class="text-red-400 text-sm">{{ error }}</p>
-        <p v-if="success" class="text-green-500 text-sm">{{ success }}</p>
-        <button
-          type="submit"
-          :disabled="loading"
-          class="py-2.5 bg-zinc-900 text-white text-sm rounded-md hover:bg-zinc-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors cursor-pointer"
-        >
-          {{ loading ? '註冊中...' : '註冊' }}
-        </button>
+        <Message v-if="error" severity="error" :closable="false">{{ error }}</Message>
+        <Message v-if="success" severity="success" :closable="false">{{ success }}</Message>
+        <Button type="submit" :loading="loading" label="註冊" fluid />
       </form>
       <p class="text-center text-sm text-gray-500">
         已有帳號？

@@ -4,22 +4,16 @@
       <h2 class="text-xl font-bold">待辦清單</h2>
 
       <form class="grid grid-cols-[1fr_auto] gap-2" @submit.prevent="addTodo">
-        <input
+        <InputText
           v-model="newTitle"
           placeholder="新增待辦事項..."
           required
-          class="px-3 py-2 border border-gray-300 rounded-md text-sm outline-none focus:border-gray-500 transition-colors"
+          fluid
         />
-        <button
-          type="submit"
-          :disabled="adding"
-          class="px-4 py-2 bg-zinc-900 text-white text-sm rounded-md hover:bg-zinc-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors cursor-pointer whitespace-nowrap"
-        >
-          {{ adding ? '新增中...' : '新增' }}
-        </button>
+        <Button type="submit" :loading="adding" label="新增" />
       </form>
 
-      <p v-if="error" class="text-red-400 text-sm">{{ error }}</p>
+      <Message v-if="error" severity="error" :closable="false">{{ error }}</Message>
 
       <ul v-if="todos.length > 0" class="grid gap-2">
         <li
@@ -27,11 +21,10 @@
           :key="todo.id"
           class="grid grid-cols-[auto_1fr_auto] items-center gap-3 px-4 py-3 border border-gray-200 rounded-lg"
         >
-          <input
-            type="checkbox"
-            :checked="todo.is_complete"
-            class="w-4 h-4 cursor-pointer"
-            @change="toggleTodo(todo)"
+          <Checkbox
+            :modelValue="todo.is_complete"
+            binary
+            @update:modelValue="toggleTodo(todo)"
           />
           <span
             class="text-sm transition-colors"
@@ -39,12 +32,13 @@
           >
             {{ todo.title }}
           </span>
-          <button
-            class="text-xs px-1.5 py-0.5 rounded text-gray-300 hover:bg-red-50 hover:text-red-400 transition-colors cursor-pointer"
+          <Button
+            icon="pi pi-times"
+            severity="danger"
+            text
+            size="small"
             @click="deleteTodo(todo.id)"
-          >
-            ✕
-          </button>
+          />
         </li>
       </ul>
 
@@ -107,11 +101,14 @@ async function addTodo() {
 }
 
 async function toggleTodo(todo: Todo) {
-  const { error: err } = await api('todos/toggle', () =>
-    Promise.resolve(supabase.from('todos').update({ is_complete: !todo.is_complete }).eq('id', todo.id))
-  )
-  if (err) { error.value = err.message; return }
   todo.is_complete = !todo.is_complete
+  const { error: err } = await api('todos/toggle', () =>
+    Promise.resolve(supabase.from('todos').update({ is_complete: todo.is_complete }).eq('id', todo.id))
+  )
+  if (err) {
+    error.value = err.message
+    todo.is_complete = !todo.is_complete
+  }
 }
 
 async function deleteTodo(id: number) {
